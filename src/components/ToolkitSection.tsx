@@ -1,6 +1,7 @@
 // src/components/ToolkitSection.tsx
 "use client";
 import React, { useRef, useState } from 'react'; // Added useState
+import Image from 'next/image';
 import { useScrollAnimate } from '@/hooks/useScrollAnimate';
 
 interface Tool {
@@ -66,15 +67,17 @@ const ToolCard = ({ tool }: { tool: Tool }) => {
       className={`group bg-neutral-800/60 p-6 rounded-xl shadow-lg border border-neutral-700 
                   transform transition-all duration-300 ease-in-out 
                   hover:-translate-y-1.5 hover:scale-[1.03] 
-                  hover:shadow-xl hover:border-neutral-600`} // Adjusted border color on hover
+                  hover:shadow-xl hover:border-neutral-600`}
       style={gradientStyle}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <div className="flex flex-col items-center text-center">
-        <img
+        <Image
           src={tool.logo}
           alt={tool.name + ' logo'}
+          width={48}
+          height={48}
           className="mb-4 w-12 h-12 object-contain transition-transform duration-300 ease-in-out group-hover:scale-110"
           loading="lazy"
         />
@@ -92,16 +95,6 @@ const ToolkitSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useScrollAnimate(sectionRef as React.RefObject<HTMLElement>);
 
-  const groupedTools = tools.reduce((acc, tool) => {
-    const category = tool.category;
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-    acc[category].push(tool);
-    return acc;
-  }, {} as Record<Tool['category'], Tool[]>);
-
-
   return (
     <section
       id="toolkit"
@@ -112,7 +105,6 @@ const ToolkitSection = () => {
       <p className="text-center text-gray-400 mb-10 max-w-2xl">
         A selection of technologies I leverage to create innovative and efficient solutions.
       </p>
-      {/* Changed gap-8 to gap-6 for potentially more uniform perceived spacing */}
       <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {tools.map((tool) => (
           <ToolCard key={tool.name} tool={tool} />

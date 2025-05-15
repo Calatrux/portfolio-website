@@ -5,9 +5,7 @@ This is a personal portfolio website built with Next.js (React), TypeScript, and
 ## Features
 - **Modern UI**: Built with Tailwind CSS for rapid, responsive design.
 - **Animations**: Ready for scroll-based and interactive animations.
-- **Figma Integration**: Structure prepared for Figma MCP server import.
 - **TypeScript**: Type-safe codebase for reliability.
-- **ESLint**: Linting for code quality.
 
 ## Getting Started
 
@@ -29,10 +27,6 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 - `src/` — Main source code (pages, components, styles)
 - `.github/copilot-instructions.md` — Copilot custom instructions
 - `.vscode/tasks.json` — VS Code tasks for dev/build/lint
-
-## Next Steps
-- Connect to your Figma MCP server for design import.
-- Start building your portfolio sections and animations!
 
 ---
 
