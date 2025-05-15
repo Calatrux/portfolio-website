@@ -1,33 +1,28 @@
 // src/components/ToolkitSection.tsx
 "use client";
-import React, { useRef, useState } from 'react'; // Added useState
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useScrollAnimate } from '@/hooks/useScrollAnimate';
 
 interface Tool {
   name: string;
   description: string;
-  logo: string; // Path to SVG logo
+  logo: string;
   category: 'Frontend' | 'Backend & General' | 'Database' | 'Game Development';
 }
 
-// Reordered and filtered tools with SVG logo paths
 const tools: Tool[] = [
-  // Frontend (custom order)
   { name: 'React', description: 'A JavaScript library for building user interfaces.', logo: '/logos/react.svg', category: 'Frontend' },
   { name: 'Next.js', description: 'The React framework for production web applications.', logo: '/logos/nextjs.svg', category: 'Frontend' },
   { name: 'TypeScript', description: 'JavaScript with syntax for types, enhancing code quality.', logo: '/logos/typescript.svg', category: 'Frontend' },
   { name: 'JavaScript', description: 'The programming language of the Web.', logo: '/logos/javascript.svg', category: 'Frontend' },
   { name: 'HTML', description: 'The markup language for structuring web content.', logo: '/logos/htmlcss.svg', category: 'Frontend' },
   { name: 'CSS', description: 'The style sheet language for designing web pages.', logo: '/logos/css.svg', category: 'Frontend' },
-  // Backend & General
   { name: 'Java', description: 'Versatile, object-oriented language for large-scale apps.', logo: '/logos/java.svg', category: 'Backend & General' },
   { name: 'Python', description: 'High-level language for web, data science, and AI.', logo: '/logos/python.svg', category: 'Backend & General' },
   { name: 'C#', description: 'Modern language by Microsoft for web, game, and enterprise.', logo: '/logos/csharp.svg', category: 'Backend & General' },
-  // Databases
   { name: 'PostgreSQL', description: 'Powerful, open-source object-relational database system.', logo: '/logos/postgresql.svg', category: 'Database' },
   { name: 'MongoDB', description: 'Source-available cross-platform document-oriented database.', logo: '/logos/mongodb.svg', category: 'Database' },
-  // Game Development
   { name: 'Unity', description: 'Cross-platform game engine for 2D and 3D games.', logo: '/logos/unity.svg', category: 'Game Development' },
 ];
 
@@ -42,22 +37,15 @@ const ToolCard = ({ tool }: { tool: Tool }) => {
     const width = rect.width;
     const percentage = (x / width) * 100;
 
-    // Monochrome gradient reacting to mouse position
-    // Adjust colors for desired subtlety and professionalism
-    const colorStart = `rgba(120, 120, 120, ${0.4 + (percentage / 100) * 0.3})`; // More opaque on the right
-    const colorEnd = `rgba(80, 80, 80, ${0.7 - (percentage / 100) * 0.3})`;   // More opaque on the left
-    
-    // Using a linear gradient that shifts based on mouse position
-    // The gradient angle or color stops can be adjusted for different effects
-    // Here, we'll make the gradient appear to "shine" from the mouse direction
+    const colorStart = `rgba(120, 120, 120, ${0.4 + (percentage / 100) * 0.3})`;
+    const colorEnd = `rgba(80, 80, 80, ${0.7 - (percentage / 100) * 0.3})`;
     const dynamicGradient = `linear-gradient(${90 + (percentage - 50) / 2}deg, ${colorEnd}, ${colorStart})`;
-
 
     setGradientStyle({ background: dynamicGradient });
   };
 
   const handleMouseLeave = () => {
-    setGradientStyle({}); // Reset to default background (defined by className)
+    setGradientStyle({});
   };
 
   return (

@@ -10,7 +10,6 @@ export default function Home() {
       <ToolkitSection />
       <ProjectsSection />
       <ContactSection /> {/* Changed from InterestsSection */}
-      {/* Footer is already in RootLayout */}
     </div>
   );
 }

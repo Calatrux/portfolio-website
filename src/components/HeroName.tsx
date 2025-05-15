@@ -2,7 +2,7 @@
 "use client";
 import React, { useRef, useState, useEffect } from 'react';
 import { useScrollAnimate } from '@/hooks/useScrollAnimate'; 
-import AnimatedBackground from '././AnimatedBackground'; // New component for the background
+import AnimatedBackground from '././AnimatedBackground';
 
 const adjectives = ["a high school student", "a software engineer", "a full stack developer", "a video game designer", "a robotics programmer", "a data scientist", "a passionate learner"];
 
@@ -24,7 +24,6 @@ const HeroName = () => {
       }
 
       if (!isDeleting && displayedAdjective === fullText) {
-        // Pause at end of word
         setTimeout(() => setIsDeleting(true), 1500);
       } else if (isDeleting && displayedAdjective === "") {
         setIsDeleting(false);
@@ -40,18 +39,18 @@ const HeroName = () => {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen flex flex-col justify-center items-center text-center relative w-full max-w-full" // Removed overflow-hidden
+      className="min-h-screen flex flex-col justify-center items-center text-center relative w-full max-w-full"
     >
-      <AnimatedBackground /> {/* Add the animated background */}
-      <div className="z-10 relative p-8"> {/* Added p-8 here for content padding */}
+      <AnimatedBackground />
+      <div className="z-10 relative p-8">
         <h1 className="text-6xl sm:text-8xl font-bold tracking-tight mb-2">
           I&apos;m Shubham,
         </h1>
-        <h2 className="text-5xl sm:text-7xl font-semibold tracking-tight text-gray-300 mb-6 min-h-[80px] sm:min-h-[100px]"> {/* Changed text-cyan-400 to text-gray-300 for monochrome */}
+        <h2 className="text-5xl sm:text-7xl font-semibold tracking-tight text-gray-300 mb-6 min-h-[80px] sm:min-h-[100px]">
           {displayedAdjective}
-          <span className="animate-pulse">|</span> {/* Blinking cursor */}
+          <span className="animate-pulse">|</span>
         </h2>
-        <p className="text-xl sm:text-2xl text-gray-400 max-w-3xl"> {/* Increased max-width for longer description */}
+        <p className="text-xl sm:text-2xl text-gray-400 max-w-3xl">
           A passionate 16-year-old high school senior using computer science to build innovative solutions and empower others.
         </p>
       </div>

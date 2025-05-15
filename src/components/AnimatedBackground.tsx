@@ -1,10 +1,8 @@
-// src/components/AnimatedBackground.tsx
 "use client";
 import React, { useEffect, useRef } from "react";
 
-// Updated to generate monochrome colors
 const getMonochromeColor = (opacity: number = 1) => {
-  const intensity = Math.floor(Math.random() * 105) + 180; // Range: 150-255 (lighter grays to white)
+  const intensity = Math.floor(Math.random() * 105) + 180;
   return `rgba(${intensity}, ${intensity}, ${intensity}, ${opacity})`;
 };
 
@@ -15,7 +13,7 @@ interface CircuitLine {
   speed: number;
   opacity: number;
   color: string;
-  isVertical: boolean; // To draw vertical or horizontal lines
+  isVertical: boolean;
   width: number;
 }
 
@@ -31,36 +29,34 @@ const AnimatedBackground = () => {
     let animationFrameId: number;
     
     const setCanvasDimensions = () => {
-      // Full viewport width, height extends beyond section for blending
       canvas.width = window.innerWidth;
       const parentHeight = canvas.parentElement
         ? canvas.parentElement.offsetHeight
         : window.innerHeight;
-      canvas.height = parentHeight + 400; // Extend 400px downwards for smooth blend
+      canvas.height = parentHeight + 400;
     };
     
-    setCanvasDimensions(); 
+    setCanvasDimensions();
 
-    const lineCount = 750; // Increased for more density, adjust as needed
+    const lineCount = 750;
     const lines: CircuitLine[] = [];
 
     function initLines() {
       if (canvas == null) return;
-    
-      lines.length = 0; 
-      const currentWidth = canvas.width; // Changed from canvas.width + 300
+      lines.length = 0;
+      const currentWidth = canvas.width;
       const currentHeight = canvas.height;
       for (let i = 0; i < lineCount; i++) {
-        const isVertical = Math.random() > 0.4; // Balance between vertical and horizontal
+        const isVertical = Math.random() > 0.4;
         lines.push({
           x: Math.random() * currentWidth,
           y: Math.random() * currentHeight,
-          length: Math.random() * (isVertical ? 80 : 60) + (isVertical ? 30 : 20), // Slightly longer lines
-          speed: Math.random() * 0.6 + 0.15, // Slightly slower and more consistent speeds
-          opacity: Math.random() * 0.2 + 0.08, // Subtle but visible
+          length: Math.random() * (isVertical ? 80 : 60) + (isVertical ? 30 : 20),
+          speed: Math.random() * 0.6 + 0.15,
+          opacity: Math.random() * 0.2 + 0.08,
           color: getMonochromeColor(Math.random() * 0.2 + 0.08),
           isVertical: isVertical,
-          width: Math.random() * 1.0 + 0.2 // Slightly thinner for subtlety
+          width: Math.random() * 1.0 + 0.2
         });
       }
     }
@@ -70,17 +66,14 @@ const AnimatedBackground = () => {
       if (!ctx || !canvas) return;
       const currentWidth = canvas.width;
       const currentHeight = canvas.height;
-      ctx.clearRect(0, 0, currentWidth, currentHeight); 
+      ctx.clearRect(0, 0, currentWidth, currentHeight);
 
       lines.forEach((line) => {
-        line.y += line.speed; // All lines drift downwards
+        line.y += line.speed;
 
-        // Reset logic
-        if (line.y > currentHeight + line.length) { // Common reset for both vertical and horizontal
-          line.y = -line.length; 
-          // Ensure x is reset within the current canvas width
-          line.x = Math.random() * currentWidth; 
-          // Optionally re-randomize other properties for variation upon reset
+        if (line.y > currentHeight + line.length) {
+          line.y = -line.length;
+          line.x = Math.random() * currentWidth;
           line.opacity = Math.random() * 0.2 + 0.08;
           line.color = getMonochromeColor(line.opacity);
           line.speed = Math.random() * 0.6 + 0.15;
@@ -99,7 +92,6 @@ const AnimatedBackground = () => {
           ctx.lineTo(line.x + line.length / 2, line.y);
         }
         ctx.stroke();
-        
       });
 
       animationFrameId = requestAnimationFrame(draw);
@@ -108,8 +100,8 @@ const AnimatedBackground = () => {
     draw();
 
     const handleResize = () => {
-      setCanvasDimensions(); // This will now use offsetWidth/Height
-      initLines(); 
+      setCanvasDimensions();
+      initLines();
     };
 
     window.addEventListener("resize", handleResize);

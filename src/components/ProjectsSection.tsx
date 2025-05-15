@@ -1,26 +1,23 @@
 // src/components/ProjectsSection.tsx
 "use client";
-import React, { useRef, useState } from 'react'; // Added useState
+import React, { useRef, useState } from 'react';
 import { useScrollAnimate } from '@/hooks/useScrollAnimate';
 
-// Define project data type
 interface Project {
   title: string;
   description: string;
   technologies: string[];
-  link?: string; // Optional link for the project
-  imageSlug: string; // Folder name in public/projects/
-  imageCount: number; // Number of images in the folder
-  imageFileExtension?: string; // e.g., 'jpg', 'png'. Defaults to 'jpg'.
+  link?: string;
+  imageSlug: string;
+  imageCount: number;
+  imageFileExtension?: string;
 }
 
-// Define technology logo mapping type
 interface TechLogo {
   name: string;
   src: string;
 }
 
-// Technology logos based on public/tool-logos.json and project needs
 const allTechLogos: TechLogo[] = [
   { name: 'React', src: '/logos/react.svg' },
   { name: 'Next.js', src: '/logos/nextjs.svg' },
@@ -98,7 +95,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
       hover:shadow-[0_0_20px_30px_rgba(255,255,255,0.5)] 
       hover:-translate-y-2 hover:scale-[1.02] hover:border-white/50 w-full"
     >
-      {/* Image Carousel - Left side on md screens, Top on sm screens */}
       <div className="relative md:w-1/2 w-full bg-neutral-700/50 flex items-center justify-center min-h-[250px] md:min-h-[300px] aspect-[16/9] md:aspect-auto overflow-hidden">
         {project.imageCount > 0 ? (
           <>
@@ -147,7 +143,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
         )}
       </div>
 
-      {/* Project Details - Right side on md screens, Bottom on sm screens */}
       <div className="md:w-1/2 w-full p-6 sm:p-8 flex flex-col justify-center">
         <h3 className="text-2xl sm:text-3xl font-semibold mb-3 sm:mb-4 text-gray-100">{project.title}</h3>
         <p className="text-gray-300 text-sm sm:text-base mb-4 sm:mb-6 flex-grow leading-relaxed">{project.description}</p>
