@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background-start-rgb: 0, 0, 0; /* Black */
+    --background-end-rgb: 10, 10, 10; /* Off-black */
+    --foreground-rgb: 229, 229, 231; /* Light gray/off-white, similar to Apple's text color */
+    --muted-foreground-rgb: 136, 136, 136; /* Muted gray for secondary text */
+
+    --font-sans: var(--font-geist-sans); /* Using existing modern Geist font */
+    --font-mono: var(--font-geist-mono);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-start-rgb: 0, 0, 0;
+      --background-end-rgb: 10, 10, 10;
+      --foreground-rgb: 229, 229, 231;
+      --muted-foreground-rgb: 136, 136, 136;
+    }
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))
+      )
+      rgb(var(--background-start-rgb));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+/* Basic scroll-reveal animation */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,14 @@
+[
+  {"name": "React", "src": "/logos/react.svg"},
+  {"name": "Next.js", "src": "/logos/nextjs.svg"},
+  {"name": "CSS", "src": "/logos/css.svg"},
+  {"name": "TypeScript", "src": "/logos/typescript.svg"},
+  {"name": "Java", "src": "/logos/java.svg"},
+  {"name": "Python", "src": "/logos/python.svg"},
+  {"name": "C#", "src": "/logos/csharp.svg"},
+  {"name": "HTML/CSS", "src": "/logos/htmlcss.svg"},
+  {"name": "JavaScript", "src": "/logos/javascript.svg"},
+  {"name": "PostgreSQL", "src": "/logos/postgresql.svg"},
+  {"name": "MongoDB", "src": "/logos/mongodb.svg"},
+  {"name": "Unity", "src": "/logos/unity.svg"}
+]
