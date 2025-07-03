@@ -42,7 +42,7 @@ const ContactSection = () => {
 						aria-label={link.name}
 						className="text-gray-400 hover:text-white transition-colors duration-300 group"
 					>
-						<div className="p-4 bg-neutral-800/50 rounded-full shadow-lg border border-neutral-700 transform transition-all duration-300 hover:bg-neutral-700/70 hover:shadow-cyan-500/50 hover:scale-110">
+						<div className="p-4 bg-neutral-800/50 rounded-full shadow-lg border border-neutral-700 transform transition-all duration-300 hover:bg-neutral-700/70 hover:shadow-white/50 hover:scale-110">
 							{link.icon}
 						</div>
 					</a>

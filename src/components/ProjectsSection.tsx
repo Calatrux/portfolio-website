@@ -39,7 +39,17 @@ const projectsData: Project[] = [
     title: "FRC Scouting App",
     description: "A custom-built scouting system developed for my local FIRST Robotics Competition (FRC) team. Built using C#, Unity, and PostgreSQL, the app runs on 8 Android tablets and allows team members to collect detailed match data on competing robots in real-time. This streamlined system replaced traditional paper-based methods, enabling faster, more accurate analysis and more informed match strategies.",
     technologies: ["C#", "Unity", "PostgreSQL"],
+    link: "https://github.com/Calatrux/2025-frc-scouting-app",
     imageSlug: "scouting-app",
+    imageCount: 3,
+    imageFileExtension: "png",
+  },
+  {
+    description: "A full-stack website for a sustainable Indian vegetarian restaurant, built for a school competition. Led development of the site using HTML/CSS/JS on the front end, with a MongoDB + Python backend supporting menu management, reservations, contact form, and an AI Chatbot. Emphasized clean UI and accessibility. Placed 8th in TSA National Conference in the Webmaster event.",
+    title: "Curry Leaf Cafe",
+    technologies: ["HTML", "CSS", "JavaScript", "MongoDB", "Python"],
+    link: "https://curryleafcafe.onrender.com/realindex.html",
+    imageSlug: "curry-leaf-cafe",
     imageCount: 3,
     imageFileExtension: "png",
   },
@@ -49,15 +59,6 @@ const projectsData: Project[] = [
     technologies: ["Unity", "C#"],
     link: "https://calatrux.itch.io/dungeon-escape-knights-quest",
     imageSlug: "dungeons-escape",
-    imageCount: 3,
-    imageFileExtension: "png",
-  },
-  {
-    title: "Curry Leaf Cafe",
-    description: "A full-stack website for a sustainable Indian vegetarian restaurant, built for a school competition. Led development of the site using HTML/CSS/JS on the front end, with a MongoDB + Python backend supporting menu management, reservations, and contact forms. Emphasized clean UI and accessibility. Place Top 10 in the state.",
-    technologies: ["HTML", "CSS", "JavaScript", "MongoDB", "Python"],
-    link: "https://curryleafcafe.onrender.com/realindex.html",
-    imageSlug: "curry-leaf-cafe",
     imageCount: 3,
     imageFileExtension: "png",
   },
@@ -92,7 +93,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div 
       className="group bg-neutral-800/70 rounded-xl overflow-hidden shadow-2xl border border-neutral-700 flex flex-col md:flex-row transform transition-all duration-300 
-      hover:shadow-[0_0_20px_30px_rgba(255,255,255,0.5)] 
+      hover:shadow-[0_0_3px_2px_rgba(255,255,255,0.2),0_0_16px_6px_rgba(255,255,255,0.3),0_0_32px_12px_rgba(255,255,255,0.2),0_0_64px_24px_rgba(255,255,255,0.1)] 
       hover:-translate-y-2 hover:scale-[1.02] hover:border-white/50 w-full"
     >
       <div className="relative md:w-1/2 w-full bg-neutral-700/50 flex items-center justify-center min-h-[250px] md:min-h-[300px] aspect-[16/9] md:aspect-auto overflow-hidden">
