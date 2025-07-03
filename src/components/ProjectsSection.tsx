@@ -64,8 +64,8 @@ const projectsData: Project[] = [
   },
   {
     title: "Bazar (Internship Project)",
-    description: "Contributed to a large-scale e-commerce platform similar to Amazon during a software development internship. Built core frontend and backend systems including JWT-based user authentication, an order review workflow, and a product review feature. Worked in a collaborative React & PostgreSQL codebase, committing over 5,000 lines of code and designing systems used across the site.",
-    technologies: ["React", "PostgreSQL", "TypeScript", "Next.js"],
+    description: "Contributed to a full-stack e-commerce platform using React, Next.js, and PostgreSQL. Built responsive product pages, cart workflows, user authentication with JWT + Argon2, and content curation tools. Led a 6-person team developing a React Native mobile app while deploying backend infrastructure on AWS with CloudWatch monitoring. Committed over 10,000 lines of production code, shipping real features that increased platform revenue by 230%.",
+    technologies: ["React", "Next.js", "PostgreSQL", "TypeScript"],
     link: "https://bazar.earth/",
     imageSlug: "bazar",
     imageCount: 3,
