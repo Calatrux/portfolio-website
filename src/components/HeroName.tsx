@@ -1,6 +1,6 @@
 // src/components/HeroName.tsx
 "use client";
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedBackground from './AnimatedBackground';
 
@@ -73,7 +73,7 @@ const HeroName = () => {
           variants={itemVariants}
           className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-br from-white via-white/90 to-white/60 drop-shadow-sm leading-none"
         >
-          I'm Shubham,
+          I&apos;m Shubham,
         </motion.h1>
 
         <motion.div variants={itemVariants} className="h-[60px] sm:h-[90px] flex items-center justify-center">

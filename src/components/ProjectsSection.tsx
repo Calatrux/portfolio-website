@@ -113,7 +113,6 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
         <div className="relative md:w-[45%] w-full bg-neutral-950 flex items-center justify-center min-h-[220px] md:min-h-[300px] aspect-[16/9] md:aspect-auto overflow-hidden">
           {project.imageCount > 0 ? (
             <>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <motion.img
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
@@ -184,6 +183,7 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
                 return (
                   <span key={techIndex} className="flex items-center gap-1.5 bg-neutral-800/80 px-2.5 py-1 rounded-full text-neutral-300 text-xs font-medium border border-white/5 z-20">
                     {logoSrc && (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img src={logoSrc} alt={tech + ' logo'} className="w-3 h-3 object-contain" />
                     )}
                     {tech}
