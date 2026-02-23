@@ -1,57 +1,89 @@
 "use client";
-import React, { useRef } from 'react';
-import { useScrollAnimate } from '@/hooks/useScrollAnimate';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Linkedin, Github, Mail } from 'lucide-react';
 
 const socialLinks = [
 	{
 		name: 'LinkedIn',
-		icon: <Linkedin size={32} />,
+		icon: <Linkedin size={28} strokeWidth={1.5} />,
 		url: 'https://www.linkedin.com/in/shubhamprasad1/',
 	},
 	{
 		name: 'GitHub',
-		icon: <Github size={32} />,
+		icon: <Github size={28} strokeWidth={1.5} />,
 		url: 'https://github.com/Calatrux',
 	},
 	{
 		name: 'Email',
-		icon: <Mail size={32} />,
+		icon: <Mail size={28} strokeWidth={1.5} />,
 		url: 'mailto:shubm.prsd@gmail.com',
 	},
 ];
 
-const ContactSection = () => {
-	const sectionRef = useRef<HTMLDivElement>(null);
-	useScrollAnimate(sectionRef as React.RefObject<HTMLElement>);
+const containerVariants: import('framer-motion').Variants = {
+	hidden: { opacity: 0 },
+	visible: {
+		opacity: 1,
+		transition: {
+			staggerChildren: 0.15,
+			delayChildren: 0.2,
+		},
+	},
+};
 
+const itemVariants: import('framer-motion').Variants = {
+	hidden: { opacity: 0, y: 20 },
+	visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const ContactSection = () => {
 	return (
 		<section
 			id="contact"
-			ref={sectionRef}
-			className="flex flex-col justify-center items-center py-16 px-4 scroll-animate min-h-[250px]"
+			className="flex flex-col justify-center items-center py-20 px-4 min-h-[40vh] relative overflow-hidden"
 		>
-			<h2 className="text-5xl font-bold mb-12 text-center">Get in Touch</h2>
-			<div className="flex space-x-8">
-				{socialLinks.map((link, index) => (
-					<a
-						key={index}
-						href={link.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label={link.name}
-						className="text-gray-400 hover:text-white transition-colors duration-300 group"
-					>
-						<div className="p-4 bg-neutral-800/50 rounded-full shadow-lg border border-neutral-700 transform transition-all duration-300 hover:bg-neutral-700/70 hover:shadow-white/50 hover:scale-110">
-							{link.icon}
-						</div>
-					</a>
-				))}
-			</div>
-			<p className="mt-12 text-center text-muted-foreground">
-				Feel free to reach out! I&apos;m always open to discussing new projects,
-				creative ideas, or opportunities to collaborate.
-			</p>
+			<div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(255,255,255,0.02)_0%,transparent_50%)] pointer-events-none" />
+
+			<motion.div
+				variants={containerVariants}
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ once: true, margin: "-50px" }}
+				className="flex flex-col items-center z-10 max-w-2xl text-center"
+			>
+				<motion.h2
+					variants={itemVariants}
+					className="text-4xl md:text-5xl font-bold mb-8 tracking-tighter text-white"
+				>
+					Get in Touch
+				</motion.h2>
+
+				<motion.p
+					variants={itemVariants}
+					className="mb-10 text-base md:text-lg text-neutral-400 font-light leading-relaxed"
+				>
+					Feel free to reach out! I&apos;m always open to discussing new projects,
+					creative ideas, or opportunities to collaborate.
+				</motion.p>
+
+				<motion.div variants={itemVariants} className="flex space-x-6 md:space-x-8">
+					{socialLinks.map((link, index) => (
+						<a
+							key={index}
+							href={link.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={link.name}
+							className="text-neutral-400 hover:text-white transition-colors duration-300 group"
+						>
+							<div className="p-4 bg-white/5 backdrop-blur-md rounded-full shadow-lg border border-white/10 transform transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-110 hover:-translate-y-1.5 hover:shadow-[0_10px_20px_rgba(255,255,255,0.05)]">
+								{link.icon}
+							</div>
+						</a>
+					))}
+				</motion.div>
+			</motion.div>
 		</section>
 	);
 };
